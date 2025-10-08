@@ -46,12 +46,13 @@ if [ -z "$RUFF_MODE" ]; then
 fi
 
 if [ "$CMD" = "ruff" ]; then
+  cd "$GIT_NAME" || cd /code
   case "$RUFF_MODE" in
     "check")
-      find -L /code $CUSTOM_FIND -name [eE]xtensions -prune -o -name skins -prune -o -name "*.py" -print | xargs -r ruff check
+      ruff check --exclude Extensions,extensions,skins
       ;;
     "format-check")
-      find -L /code $CUSTOM_FIND -name [eE]xtensions -prune -o -name skins -prune -o -name "*.py" -print | xargs -r ruff format --check
+      ruff format --check --exclude Extensions,extensions,skins
       ;;
     *)
       echo "Unknown mode: $RUFF_MODE (use 'check' or 'format-check')"
