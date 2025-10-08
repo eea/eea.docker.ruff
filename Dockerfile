@@ -9,5 +9,7 @@ RUN apk add --no-cache --virtual .run-deps git \
 
 COPY docker-entrypoint.sh /docker-entrypoint.sh
 
+RUN chmod +x /docker-entrypoint.sh
+
 ENTRYPOINT ["/docker-entrypoint.sh"]
 CMD ["ruff"]
