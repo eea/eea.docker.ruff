@@ -3,7 +3,6 @@ set -e
 
 CMD="$1"
 RUFF_MODE="$2"
-GIT_SRC=""
 
 if [ "$CMD" = "format-check" ] || [ "$CMD" = "check" ]; then
   RUFF_MODE="$CMD"
@@ -46,7 +45,7 @@ if [ -z "$RUFF_MODE" ]; then
 fi
 
 if [ "$CMD" = "ruff" ]; then
-  cd "$GIT_NAME" || cd /code
+  cd /code/$GIT_NAME
   case "$RUFF_MODE" in
     "check")
       ruff check --exclude Extensions,extensions,skins
