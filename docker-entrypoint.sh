@@ -4,7 +4,7 @@ set -e
 CMD="$1"
 RUFF_MODE="$2"
 
-if [ "$CMD" = "format-check" ] || [ "$CMD" = "check" ]; then
+if [ "$CMD" = "format" ] || [ "$CMD" = "check" ]; then
   RUFF_MODE="$CMD"
   CMD="ruff"
 fi
