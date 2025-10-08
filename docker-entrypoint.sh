@@ -48,10 +48,10 @@ if [ "$CMD" = "ruff" ]; then
   cd /code/$GIT_NAME
   case "$RUFF_MODE" in
     "check")
-      ruff check --exclude Extensions,extensions,skins --config /ruff.toml
+      ruff check --fix --exclude Extensions,extensions,skins --config /ruff.toml
       ;;
-    "format-check")
-      ruff format --check --exclude Extensions,extensions,skins --config /ruff.toml
+    "format")
+      ruff format --exclude Extensions,extensions,skins --config /ruff.toml
       ;;
     *)
       echo "Unknown mode: $RUFF_MODE (use 'check' or 'format-check')"
