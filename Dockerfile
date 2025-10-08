@@ -7,6 +7,8 @@ RUN apk add --no-cache --virtual .run-deps git \
  && pip install ruff==$RUFF_VERSION \
  && mkdir -p /code
 
+COPY ruff.toml /ruff.toml
+
 COPY docker-entrypoint.sh /docker-entrypoint.sh
 
 RUN chmod +x /docker-entrypoint.sh
