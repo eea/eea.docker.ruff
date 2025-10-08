@@ -5,6 +5,11 @@ CMD="$1"
 RUFF_MODE="$2"
 GIT_SRC=""
 
+if [ "$CMD" = "format-check" ] || [ "$CMD" = "check" ]; then
+  RUFF_MODE="$CMD"
+  CMD="ruff"
+fi
+
 if [[ ${CMD:0:4} = "http" ]]; then
   GIT_SRC=$1
   CMD="ruff"
