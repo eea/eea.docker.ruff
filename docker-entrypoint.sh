@@ -54,7 +54,7 @@ if [ "$CMD" = "ruff" ]; then
       ruff format --exclude Extensions,extensions,skins --config /ruff.toml
       ;;
     *)
-      echo "Unknown mode: $RUFF_MODE (use 'check' or 'format-check')"
+      echo "Unknown mode: $RUFF_MODE (use 'check' or 'format')"
       exit 1
       ;;
   esac
