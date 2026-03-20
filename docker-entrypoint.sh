@@ -4,7 +4,7 @@ set -e
 CMD="$1"
 RUFF_MODE="$2"
 
-if [ "$CMD" = "format" ] || [ "$CMD" = "check" ]; then
+if [ "$CMD" = "format" ] || [ "$CMD" = "check" ] || [ "$CMD" = "fix-all" ]; then
   RUFF_MODE="$CMD"
   CMD="ruff"
 fi
@@ -52,6 +52,10 @@ if [ "$CMD" = "ruff" ]; then
       ;;
     "format")
       ruff format --exclude Extensions,extensions,skins --config /ruff.toml
+      ;;
+    "fix-all")
+      ruff format --exclude Extensions,extensions,skins,extras --config /ruff.toml
+      ruff check --fix --exclude Extensions,extensions,skins,extras --config /ruff.toml
       ;;
     *)
       echo "Unknown mode: $RUFF_MODE (use 'check' or 'format')"
