@@ -3,6 +3,7 @@ set -e
 
 CMD="$1"
 RUFF_MODE="$2"
+EXCLUDE_LIST="${EXCLUDE_LIST:-Extensions,extensions,skins}"
 
 if [ "$CMD" = "format" ] || [ "$CMD" = "check" ] || [ "$CMD" = "fix-all" ]; then
   RUFF_MODE="$CMD"
@@ -48,14 +49,14 @@ if [ "$CMD" = "ruff" ]; then
   cd /code/$GIT_NAME
   case "$RUFF_MODE" in
     "check")
-      ruff check --fix --exclude Extensions,extensions,skins --config /ruff.toml
+      ruff check --fix --exclude $EXCLUDE_LIST --config /ruff.toml
       ;;
     "format")
-      ruff format --exclude Extensions,extensions,skins --config /ruff.toml
+      ruff format --exclude $EXCLUDE_LIST --config /ruff.toml
       ;;
     "fix-all")
-      ruff format --exclude Extensions,extensions,skins,extras --config /ruff.toml
-      ruff check --fix --exclude Extensions,extensions,skins,extras --config /ruff.toml
+      ruff format --exclude $EXCLUDE_LIST --config /ruff.toml
+      ruff check --fix --exclude $EXCLUDE_LIST --config /ruff.toml
       ;;
     *)
       echo "Unknown mode: $RUFF_MODE (use 'check' or 'format')"
