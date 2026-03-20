@@ -15,6 +15,7 @@ or
 
 * GIT_NAME, GIT_SRC  - must be given
 * GIT_BRANCH - defaults to master
+* EXCLUDE_LIST - defaults to "Extensions,extensions,skins"
 * GIT_CHANGE_ID - can be empty or pull request id
 
 
